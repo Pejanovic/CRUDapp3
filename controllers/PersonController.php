@@ -62,8 +62,11 @@ class PersonController extends Controller
      * @return string
      */
 
-public function actionIndex(){
-    return $this->render('index');
+public function actionIndex($id){
+    $model = Person::findOne($id);
+    return $this->render('index',[
+        'model' => $model,
+    ]);
 }
 
 
@@ -95,5 +98,36 @@ public function actionIndex(){
     ]);
 }
 
+public function actionUpdate($id)
+{
+    $model = Person::findOne($id);
+
+    
+        if ($model->load($this->request->post()) && $model->save()) 
+        {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+
+else
+{
+    return $this->render('update', [
+        'model' => $model,
+    ]);
+}
+}
+
+public function actionDelete($id)
+{
+    
+$model = Person::findOne($id);
+if($model != null)
+{
+$model->delete();
+}
+if($model)
+{
+return $this->redirect(['view']);
+}
+}
 
 }

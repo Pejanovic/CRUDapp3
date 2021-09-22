@@ -1,20 +1,35 @@
 <?php
-use yii\helpers\html;
-use yii\widgets\ActiveForm;
+
+use yii\helpers\Html;
+use yii\widgets\DetailView;
+
 /* @var $this yii\web\View */
+/* @var $model app\models\Person */
 
-$this->title = 'CRUDapp2';
+
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Persons'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
+\yii\web\YiiAsset::register($this);
 ?>
-<div class="site-index">
+<div class="event-view">
 
-    <div class="jumbotron text-center bg-transparent">
-        <h1 class="display-4">CRUD APP - PERSON/CREATE</h1>
-    </div>
+    <h1><?= Html::encode($this->title) ?></h1>
 
-    <div class="body-content">
+  
 
-        
-            </div>
-        </div>
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            'id',
+            'name',
+            'lastname',
+            'birthdate',
+            'birthplace',
+            'education',
+            'privatelife',
+            'work',
+            'achievements',
+        ],
+    ]) ?>
 
 

@@ -16,7 +16,7 @@ $this->title = 'CRUDapp2';
     <div class="body-content">
         <div class="row">
         <span style="margin:10px;"><?= Html::a('Create', ['/person/create'], ['class' => 'btn btn-primary']) ?></span>
-        <span style="margin:10px;"><?= Html::a('Delete', ['/person/delete'], ['class' => 'btn btn-primary']) ?></span>
+
     
         <table class="table table-hover">
   <thead>
@@ -43,13 +43,14 @@ $this->title = 'CRUDapp2';
       <td><?php echo  $oneperson->lastname; ?></td>
       <td><?php echo  $oneperson->birthdate; ?></td>
       <td><?php echo  $oneperson->birthplace; ?></td>
-      <td><?php echo  substr($oneperson->education,0,20); echo "..."; ?></td>
-      <td><?php echo  substr($oneperson->privatelife,0,20); echo "..."; ?></td>
-      <td><?php echo  substr($oneperson->work,0,20); echo "..."; ?></td>
-      <td><?php echo  substr($oneperson->achievements,0,20); echo "..."; ?></td>
-      <td>
-      <span><?= Html::a('View')?></span>
-      <span><?= Html::a('Update')?></span>
+      <td><?php echo  substr($oneperson->education,0,12); echo "..."; ?></td>
+      <td><?php echo  substr($oneperson->privatelife,0,12); echo "..."; ?></td>
+      <td><?php echo  substr($oneperson->work,0,12); echo "..."; ?></td>
+      <td><?php echo  substr($oneperson->achievements,0,12); echo "..."; ?></td>
+      <td class="d-flex">
+      <span><?= Html::a('View', ['index', 'id' => $oneperson->id], ['class' => 'btn btn-primary'])?></span>
+      <span><?= Html::a('Update', ['update', 'id' => $oneperson->id], ['class' => 'btn btn-primary'])?></span>
+      <span><?= Html::a('Delete',['delete', 'id' => $oneperson->id], ['class' => 'btn btn-primary'])?></span>
     </td>
     </tr>
     <?php  endforeach; ?>
